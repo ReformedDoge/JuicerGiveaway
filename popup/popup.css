@@ -1,11 +1,38 @@
 body {
-    background-color: #222;
-    color: #eee;
-
-    width: 16rem;
-    height: 4rem;
+    background-image: url('/assets/JUICE.jfif');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    color: white;
+    width: 28em;
+    height: 32rem;
+    /* Set text color to white */
 }
 
-.special-text {
-    color: red;
+/* Additional CSS for specific elements */
+.btn-outline-info,
+.dropdown-menu,
+.form-label,
+.form-text {
+    color: white;
+}
+
+h2,
+.form-label,
+.form-text,
+.btn {
+    color: white !important;
+    text-shadow: -2px -2px 2px #000,
+        2px -2px 2px #000,
+        -2px 2px 2px #000,
+        2px 2px 2px #000;
+}
+
+.bg-custom-transparent {
+    background-color: rgba(204, 204, 204, 0.5);
+    /* Gray color with 50% opacity */
 }
