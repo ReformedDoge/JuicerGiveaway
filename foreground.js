@@ -402,10 +402,10 @@ function init() {
     `;
     const spinner = document.createElement("span");
     spinner.id = "loadingExport";
-    spinner.classList.add("spinner-border", "spinner-border-sm", "me-2");
+    spinner.classList.add("spinner-border", "spinner-border-sm", "text-success", "m-1");
     spinner.setAttribute("role", "status");
     spinner.setAttribute("aria-hidden", "true");
-    spinner.style.textAlign = "center";
+    spinner.style.position = "absolute";
 
     // Create container for free user text
     const freeUserContainer = document.createElement("div");
@@ -454,7 +454,7 @@ function init() {
 
     // Append elements to the main container
     container.appendChild(loadingText);
-    container.appendChild(spinner);
+    loadingText.appendChild(spinner);
     container.appendChild(freeUserContainer);
     container.appendChild(downloadCSVButton);
     container.appendChild(downloadJSONButton);
@@ -498,9 +498,10 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
     if (message.type === "startScrape") {
         tweetUser = message.user;
         myUserInfo = message.myUserInfo;
-        sendResponse("Service worker running.");
+        console.log("Service worker running.");
         init();
     } else if (message.type === "updateProgress") {
+        console.log(message.type)
         let dataLength = message.data.length;
         allDataObject = message.data;
         document.getElementById("btnDownloadCSV").textContent = `Download CSV (${dataLength} Juicers)`;
@@ -511,7 +512,7 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
         textExport.innerHTML = '<span style="color:red">Done !</span>';
         textExport.style.fontWeight = "bold";
         textExport.style.color = "#58EF7F";
-        document.getElementById("loadingExport").style.display = "none";
+        //document.getElementById("loadingExport").style.display = "none";
         document.getElementById("btnStopExport").textContent = "Close";
         document.getElementById("overlayForTwExtract");
         let textElementForTwExtract = document.getElementById("textElementForTwExtract");

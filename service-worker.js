@@ -177,16 +177,20 @@ chrome.webRequest.onBeforeSendHeaders.addListener(async request => {
         setScrapeTimer()
     }
 }, {
-    urls: ["*://*.twitter.com/i/api/graphql/*Favoriters*"]
+    urls: ["*://*.x.com/i/api/graphql/*Favoriters*"]
 }, ["requestHeaders"]);
 
+let tabUpdated = false;
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     if (I === tabId && changeInfo.status === "complete" && tab.url === C && S !== undefined) {
-        await chrome.tabs.sendMessage(tabId, {
-            type: "startScrape",
-            user: S,
-            myUserInfo: userData
-        });
+        if (!tabUpdated){
+            await chrome.tabs.sendMessage(tabId, {
+                type: "startScrape",
+                user: S,
+                myUserInfo: userData
+            });
+            tabUpdated = true;
+        }
     }
 });
 
@@ -209,6 +213,7 @@ chrome.runtime.onConnect.addListener(port => {
                 usersData = [];
                 userIdSet = new Set;
                 isPaused = false;
+                tabUpdated = false;
                 cursor = "";
                 chrome.tabs.create({
                     url: message.url

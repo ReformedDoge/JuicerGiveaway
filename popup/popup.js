@@ -11,7 +11,7 @@ try {
     // Define error messages
     const errorMessages = {
         emptyUrl: "Please enter the tweet URL.",
-        invalidUrl: "Please enter a valid tweet URL in the format https://twitter.com/username/status/tweet-id."
+        invalidUrl: "Please enter a valid tweet URL in the format https://x.com/username/status/tweet-id."
     };
 
     // Get DOM elements
@@ -28,7 +28,7 @@ try {
             return;
         }
 
-        if (!/^https:\/\/twitter\.com\/.+?\/status\/.+$/i.test(tweetUrl)) {
+        if (!/^https:\/\/x\.com\/.+?\/status\/.+$/i.test(tweetUrl)) {
             alert(errorMessages.invalidUrl);
             return;
         }
