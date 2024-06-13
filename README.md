@@ -1,5 +1,7 @@
 # JuicerGiveaway Chrome Extension
 
+## ⚠️ **Note: This extension is now discontinued as likes are now hidden on X.com (formerly known as Twitter.com).**
+
 JuicerGiveaway is a Chrome extension designed to facilitate giveaways and raffles within the Twitter community, particularly in "the Jungle" community. It allows users to easily extract the list of users who liked a specific tweet and conduct a raffle in a fun and interactive way using a wheel of fortune style interface.
 
  ![JuicerGiveaway Chrome Extension](https://i.imgur.com/25p7sxm.png)
